@@ -1,0 +1,10 @@
+{application, ebench,
+ [
+  {description, "Erlang Benchmark Suite"},
+  {vsn, "0.1"},
+  {registered, []},
+  {applications, [
+                  kernel,
+                  stdlib
+                 ]}
+ ]}.
