@@ -17,6 +17,7 @@ View benchmark results as Common Test results:
 
         # make
         # make bench
+        # firefox logs/index.html
 
 Try each case:
 
