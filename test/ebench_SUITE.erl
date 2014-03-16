@@ -58,5 +58,5 @@ hackbenchG20N20L100(_Config) ->
     ok = ebench:hackbench(20, 20, 100).
 
 hackbenchG40N40L100(_Config) ->
-    ok = ebench:hackbench(40, 20, 100).
+    ok = ebench:hackbench(40, 40, 100).
 
