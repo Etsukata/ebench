@@ -4,10 +4,9 @@
 %% @copyright 2014 Eiichi Tsukata
 %%
 
-
 -module(ebench).
 -compile([debug_info]).
--export([start/0, ring/2, ping_pong/1]).
+-export([start/0, ring/2, ping_pong/1, hackbench/3]).
 
 %% @doc start
 start() ->
@@ -30,4 +29,18 @@ ping_pong(N) ->
 %%
 ring(N, M) ->
     ebench_ring:start(N, M).
+
+-spec hackbench(G :: integer(), N :: integer(), L :: integer()) -> ok.
+%%
+%% @doc Generate G groups of N senders spraying message to N receivers for L
+%% times.
+%%
+%% This benchmark is based on benchmark 'hackbench' by Rusty Russell.
+%% Hackbench is a benchmark for scheduler and IPC mechanisms of Linux kernel.
+%% Current Linux contains hackbench as one of 'perf bench' benchmarks. See
+%% Linux kernel source code 'tools/perf/bench/sched-messaging.c' for more
+%% details.
+%%
+hackbench(G, N, L) ->
+    ebench_hackbench:start(G, N, L).
 
