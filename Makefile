@@ -1,4 +1,4 @@
-.PHONY : all compile clean eunit edoc
+.PHONY : all compile clean bench edoc
 
 all: compile
 
@@ -8,8 +8,8 @@ compile:
 clean:
 	@./rebar clean
 
-eunit:
-	@./rebar eunit
+bench:
+	@./rebar ct
 
 edoc:
 	@./rebar doc

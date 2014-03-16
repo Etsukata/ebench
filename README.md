@@ -13,6 +13,13 @@ Benchmarks
 Usage
 -----
 
+View benchmark results as Common Test results:
+
+        # make
+        # make bench
+
+Try each case:
+
         # make
         # erl -pa ebin
         > ebench:ring(2,3).
