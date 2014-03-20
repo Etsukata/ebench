@@ -6,7 +6,7 @@
 
 -module(ebench).
 -compile([debug_info]).
--export([start/0, ring/2, ping_pong/1, hackbench/3]).
+-export([start/0, ring/2, ping_pong/1, hackbench/3, cyclictest/4]).
 
 %% @doc start
 start() ->
@@ -43,4 +43,19 @@ ring(N, M) ->
 %%
 hackbench(G, N, L) ->
     ebench_hackbench:start(G, N, L).
+
+-spec cyclictest(I :: integer(), L :: integer(), N :: integer(),
+                 P :: priority_level()) -> ok.
+%%
+%% @doc Timer resolution test.
+%%
+%% Cyclictest spawns N processes with priority P and each process repeats
+%% 'timer:tc(fun() -> timer:sleep(I) end)' for L times.
+%%
+%% This benchmark is based on benchmark 'cyclictest' by Thomas Gleixner.
+%% Cyclictest is a test for high resolution timer contained in rt-tests
+%% benchmark suite. For more details, see <a href="https://rt.wiki.kernel.org/index.php/Main_Page">Real Time Linux Wiki</a>.
+%%
+cyclictest(I, L, N, P) ->
+    ebench_cyclictest:start(I, L, N, P).
 

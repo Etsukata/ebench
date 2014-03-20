@@ -5,11 +5,13 @@
          ping_pongN10k/1, ping_pongN40k/1,
          ping_pongN160k/1, ping_pongN640k/1,
          hackbenchG5N5L100/1, hackbenchG10N10L100/1,
-         hackbenchG20N20L100/1, hackbenchG40N40L100/1]).
+         hackbenchG20N20L100/1, hackbenchG40N40L100/1,
+         cyclictestI1L1000N4Pnormal/1]).
 
 all() -> [{group, ring},
           {group, ping_pong},
-          {group, hackbench}].
+          {group, hackbench},
+          {group, cyclictest}].
 
 groups() -> [{ring,
               [],
@@ -21,7 +23,10 @@ groups() -> [{ring,
              {hackbench,
               [],
               [hackbenchG5N5L100, hackbenchG10N10L100,
-               hackbenchG20N20L100, hackbenchG40N40L100]}].
+               hackbenchG20N20L100, hackbenchG40N40L100]},
+             {cyclictest,
+              [],
+              [cyclictestI1L1000N4Pnormal]}].
 
 
 ringN100M100(_Config) ->
@@ -60,3 +65,5 @@ hackbenchG20N20L100(_Config) ->
 hackbenchG40N40L100(_Config) ->
     ok = ebench:hackbench(40, 40, 100).
 
+cyclictestI1L1000N4Pnormal(_Config) ->
+    ok = ebench:cyclictest(1, 1000, 4, normal).
